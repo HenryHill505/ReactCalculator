@@ -32,6 +32,16 @@
         }
       }
 
+      class CalculatorEqualsButton extends React.Component{
+        render(){
+          return(
+            <button>
+              =
+            </button>
+          );
+        }
+      }
+
       class Calculator extends React.Component{
         constructor(props) {
           super(props);
@@ -71,6 +81,7 @@
               <div>
                 {this.renderNumberButton(0)}
                 {this.renderOperatorButton("/")}
+                {this.renderEqualsButton()}
               </div>
             </div>
           );
@@ -85,6 +96,12 @@
         renderOperatorButton(operator){
           return(
             <CalculatorOperatorButton value={operator} onClick={ operator => this.handleOperatorClick(operator)}/>
+          );
+        }
+
+        renderEqualsButton(){
+          return(
+            <CalculatorEqualsButton />
           );
         }
 
