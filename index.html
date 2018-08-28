@@ -7,6 +7,12 @@
     <div id="root">
     </div>
 
+    <style>
+      .calculator-button{
+        width: 30px;
+      }
+    </style>
+
     <script src="reactfiles/react.development.js" ></script>
     <script src="reactfiles/react-dom.development.js" ></script>
     <script src="reactfiles/babel.min.js"></script>
@@ -15,7 +21,7 @@
       class CalculatorNumberButton extends React.Component{
         render(){
           return(
-            <button onClick={() => this.props.onClick(this.props.value)}>
+            <button class="calculator-button" onClick={() => this.props.onClick(this.props.value)}>
               {this.props.value}
             </button>
           );
@@ -25,7 +31,7 @@
       class CalculatorOperatorButton extends React.Component{
         render(){
           return(
-            <button onClick={() => this.props.onClick(this.props.value)}>
+            <button class="calculator-button" onClick={() => this.props.onClick(this.props.value)}>
               {this.props.value}
             </button>
           );
@@ -35,7 +41,7 @@
       class CalculatorEqualsButton extends React.Component{
         render(){
           return(
-            <button onClick={() => this.props.onClick()}>
+            <button class="calculator-button" onClick={() => this.props.onClick()}>
               =
             </button>
           );
@@ -45,7 +51,7 @@
       class CalculatorClearButton extends React.Component{
         render(){
           return(
-            <button onClick={() => this.props.onClick()}>
+            <button class="calculator-button" onClick={() => this.props.onClick()}>
               c
             </button>
           );
