@@ -143,6 +143,14 @@
           })
         }
 
+        handleClearClick(){
+          this.setState({
+            previousNumber: 0,
+            currentNumber: 0,
+            currentOperation: null
+          })
+        }
+
         calculate(firstNumber, secondNumber, operator){
           switch(operator){
             case "+":
