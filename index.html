@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+
+    <div id="root">
+    </div>
+
+    <script src="reactfiles/react.development.js" ></script>
+    <script src="reactfiles/react-dom.development.js" ></script>
+    <script src="reactfiles/babel.min.js"></script>
+    <script type="text/babel">
+
+      class CalculatorNumberButton extends React.Component{
+        render(){
+          return(
+            <button onClick={() => this.props.onClick(this.props.value)}>
+              {this.props.value}
+            </button>
+          );
+        }
+      }
+
+      class CalculatorOperatorButton extends React.Component{
+        render(){
+          return(
+            <button>
+              {this.props.value}
+            </button>
+          )
+        }
+      }
+
+      class Calculator extends React.Component{
+        constructor(props) {
+          super(props);
+          this.state = {
+            previousNumber: 0,
+            currentNumber: 0
+          };
+        }
+        render(){
+          return(
+            <div>
+              <div>
+                {this.state.currentNumber}
+              </div>
+              <div>
+                {this.renderNumberButton(1)}
+                {this.renderNumberButton(2)}
+                {this.renderNumberButton(3)}
+                {this.renderOperatorButton("+")}
+              </div>
+              <div>
+                {this.renderNumberButton(4)}
+                {this.renderNumberButton(5)}
+                {this.renderNumberButton(6)}
+                {this.renderOperatorButton("-")}
+              </div>
+              <div>
+                {this.renderNumberButton(7)}
+                {this.renderNumberButton(8)}
+                {this.renderNumberButton(9)}
+                {this.renderOperatorButton("*")}
+              </div>
+              <div>
+                {this.renderNumberButton(0)}
+                {this.renderOperatorButton("/")}
+              </div>
+            </div>
+          );
+        }
+
+        renderNumberButton(i){
+          return(
+            <CalculatorNumberButton value={i} onClick={ i => this.handleNumberClick(i)}/>
+          );
+        }
+
+        renderOperatorButton(operator){
+          return(
+            <CalculatorOperatorButton value={operator}/>
+          );
+        }
+
+        handleNumberClick(i){
+          //alert("this.state.currentNumber");
+          //this.setState({currentNumber: 5})
+          this.setState({currentNumber: ((this.state.currentNumber+ (i*.1))*10)})
+          //this.state.currentNumber = (this.state.currentNumber + (i*.1))*10;
+        }
+      }
+
+
+      ReactDOM.render(
+        <Calculator />, document.getElementById("root")
+      )
+    </script>
+  </body>
+</html>
