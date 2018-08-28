@@ -35,7 +35,7 @@
       class CalculatorEqualsButton extends React.Component{
         render(){
           return(
-            <button>
+            <button onClick={() => this.props.onClick()}>
               =
             </button>
           );
@@ -101,7 +101,7 @@
 
         renderEqualsButton(){
           return(
-            <CalculatorEqualsButton />
+            <CalculatorEqualsButton onClick={() => this.handleEqualsClick()}/>
           );
         }
 
@@ -115,6 +115,15 @@
             previousNumber: result,
             currentNumber: 0,
             currentOperation: operator})
+        }
+
+        handleEqualsClick(){
+          let result = this.calculate(this.state.previousNumber, this.state.currentNumber, this.state.currentOperation);
+          this.setState({
+            previousNumber: 0,
+            currentNumber: result,
+            currentOperation: null
+          })
         }
 
         calculate(firstNumber, secondNumber, operator){
