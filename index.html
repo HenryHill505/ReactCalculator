@@ -45,6 +45,9 @@
           return(
             <div>
               <div>
+                {this.state.previousNumber}
+              </div>
+              <div>
                 {this.state.currentNumber}
               </div>
               <div>
@@ -86,12 +89,13 @@
         }
 
         handleNumberClick(i){
-          this.setState({currentNumber: ((this.state.currentNumber+ (i*.1))*10)})
+          this.setState({currentNumber: (Math.round((this.state.currentNumber+ (i*.1))*10))})
         }
 
         handleOperatorClick(operator){
+          let result = this.calculate(this.state.previousNumber, this.state.currentNumber, this.state.currentOperation);
           this.setState({
-            previousNumber: this.state.currenNumber,
+            previousNumber: result,
             currentNumber: 0,
             currentOperation: operator})
         }
@@ -110,8 +114,8 @@
             case "/":
               return firstNumber / secondNumber;
               break;
-            case null
-              return secondNumber
+            case null:
+              return secondNumber;
               break;
           }
         }
