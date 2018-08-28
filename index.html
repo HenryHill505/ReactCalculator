@@ -25,10 +25,10 @@
       class CalculatorOperatorButton extends React.Component{
         render(){
           return(
-            <button>
+            <button onClick={() => this.props.onClick(this.props.value)}>
               {this.props.value}
             </button>
-          )
+          );
         }
       }
 
@@ -80,15 +80,18 @@
 
         renderOperatorButton(operator){
           return(
-            <CalculatorOperatorButton value={operator}/>
+            <CalculatorOperatorButton value={operator} onClick={ operator => this.handleOperatorClick(operator)}/>
           );
         }
 
         handleNumberClick(i){
-          //alert("this.state.currentNumber");
-          //this.setState({currentNumber: 5})
           this.setState({currentNumber: ((this.state.currentNumber+ (i*.1))*10)})
-          //this.state.currentNumber = (this.state.currentNumber + (i*.1))*10;
+        }
+
+        handleOperatorClick(operator){
+          this.setState({
+            previousNumber: this.state.currenNumber,
+            currentNumber: 0})
         }
       }
 
