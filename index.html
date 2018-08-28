@@ -45,7 +45,7 @@
       class CalculatorClearButton extends React.Component{
         render(){
           return(
-            <button>
+            <button onClick={() => this.props.onClick()}>
               c
             </button>
           );
@@ -118,7 +118,7 @@
 
         renderClearButton(){
           return(
-            <CalculatorClearButton />
+            <CalculatorClearButton onClick={() => this.handleClearClick()}/>
           );
         }
 
