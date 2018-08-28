@@ -38,7 +38,7 @@
           this.state = {
             previousNumber: 0,
             currentNumber: 0,
-            operation: null
+            currentOperation: null
           };
         }
         render(){
@@ -92,7 +92,25 @@
         handleOperatorClick(operator){
           this.setState({
             previousNumber: this.state.currenNumber,
-            currentNumber: 0})
+            currentNumber: 0,
+            currentOperation: operator})
+        }
+
+        calculate(firstNumber, secondNumber, operator){
+          switch(operator){
+            case "+":
+              return firstNumber + secondNumber;
+              break;
+            case "-":
+              return firstNumber - secondNumber;
+              break;
+            case "*":
+              return firstNumber * secondNumber;
+              break;
+            case "/":
+              return firstNumber / secondNumber;
+              break;
+          }
         }
       }
 
