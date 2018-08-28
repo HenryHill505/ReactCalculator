@@ -92,6 +92,7 @@
                 {this.renderNumberButton(0)}
                 {this.renderOperatorButton("/")}
                 {this.renderEqualsButton()}
+                {this.renderClearButton()}
               </div>
             </div>
           );
@@ -112,6 +113,12 @@
         renderEqualsButton(){
           return(
             <CalculatorEqualsButton onClick={() => this.handleEqualsClick()}/>
+          );
+        }
+
+        renderClearButton(){
+          return(
+            <CalculatorClearButton />
           );
         }
 
